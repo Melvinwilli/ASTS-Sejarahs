@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perjalanan Indonesia Menuju Kemerdekaan</title>
+  <meta name="description" content="Website sejarah perjalanan Indonesia dari pendudukan Jepang hingga pembentukan pemerintahan Indonesia.">
+  <style>
+    :root{
+      --red:#c62828;
+      --red-dark:#8e1d1d;
+      --red-soft:#fff1f1;
+      --cream:#fffaf5;
+      --dark:#1e293b;
+      --muted:#64748b;
+      --white:#fff;
+      --border:#e5e7eb;
+      --shadow:0 12px 35px rgba(15,23,42,.08);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,Segoe UI,Arial,sans-serif;
+      color:var(--dark);
+      background:#fff;
+      line-height:1.7;
+    }
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+
+    /* NAVBAR */
+    .navbar{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:1000;
+      background:rgba(255,255,255,.94);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(229,231,235,.8);
+    }
+    .nav-container{
+      max-width:1180px;
+      margin:auto;
+      min-height:70px;
+      padding:0 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:11px;
+      font-weight:800;
+      font-size:17px;
+    }
+    .logo-mark{
+      width:38px;height:38px;border-radius:11px;
+      background:linear-gradient(135deg,var(--red),#ef5350);
+      color:white;
+      display:grid;place-items:center;
+      font-size:18px;
+      box-shadow:0 6px 15px rgba(198,40,40,.25);
+    }
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:5px;
+      list-style:none;
+    }
+    .nav-links a{
+      display:block;
+      padding:9px 12px;
+      border-radius:9px;
+      font-size:14px;
+      color:#475569;
+      transition:.2s;
+    }
+    .nav-links a:hover{
+      background:var(--red-soft);
+      color:var(--red);
+    }
+    .menu-btn{
+      display:none;
+      border:0;
+      background:#f8fafc;
+      font-size:23px;
+      width:42px;height:42px;
+      border-radius:10px;
+      cursor:pointer;
+    }
+
+    /* HERO */
+    .hero{
+      min-height:700px;
+      padding:145px 22px 90px;
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 85% 20%,rgba(198,40,40,.12),transparent 28%),
+        linear-gradient(180deg,#fff 0%,#fff8f5 100%);
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      width:430px;height:430px;
+      border:1px solid rgba(198,40,40,.1);
+      border-radius:50%;
+      right:-150px;top:70px;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      width:300px;height:300px;
+      border:1px solid rgba(198,40,40,.08);
+      border-radius:50%;
+      right:-80px;top:135px;
+    }
+    .hero-container{
+      max-width:1180px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      align-items:center;
+      gap:60px;
+      position:relative;
+      z-index:1;
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 12px;
+      border-radius:999px;
+      background:var(--red-soft);
+      color:var(--red);
+      font-size:13px;
+      font-weight:700;
+      margin-bottom:18px;
+    }
+    .eyebrow span{
+      width:7px;height:7px;border-radius:50%;
+      background:var(--red);
+    }
+    .hero h1{
+      font-size:clamp(42px,6vw,72px);
+      line-height:1.08;
+      letter-spacing:-2.5px;
+      margin-bottom:22px;
+    }
+    .hero h1 strong{color:var(--red)}
+    .hero p{
+      max-width:650px;
+      color:var(--muted);
+      font-size:17px;
+      margin-bottom:30px;
+    }
+    .hero-buttons{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:12px 18px;
+      border-radius:10px;
+      font-weight:700;
+      font-size:14px;
+      transition:.2s;
+      border:1px solid transparent;
+    }
+    .btn-primary{
+      background:var(--red);
+      color:#fff;
+      box-shadow:0 8px 18px rgba(198,40,40,.2);
+    }
+    .btn-primary:hover{background:var(--red-dark);transform:translateY(-2px)}
+    .btn-outline{
+      border-color:#d9dee5;
+      background:#fff;
+      color:#334155;
+    }
+    .btn-outline:hover{border-color:var(--red);color:var(--red)}
+
+    .hero-card{
+      min-height:420px;
+      border-radius:25px;
+      background:var(--dark);
+      color:white;
+      padding:28px;
+      position:relative;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      width:240px;height:240px;
+      border:45px solid rgba(198,40,40,.85);
+      border-radius:50%;
+      right:-75px;top:-75px;
+    }
+    .hero-card::after{
+      content:"";
+      position:absolute;
+      width:160px;height:160px;
+      border:35px solid rgba(255,255,255,.09);
+      border-radius:50%;
+      left:-65px;bottom:-70px;
+    }
+    .flag{
+      width:145px;
+      height:96px;
+      margin:35px auto 45px;
+      position:relative;
+      box-shadow:0 15px 35px rgba(0,0,0,.25);
+    }
+    .flag .red{height:50%;background:#e53935}
+    .flag .white{height:50%;background:#fff}
+    .hero-card h3{
+      text-align:center;
+      font-size:24px;
+      position:relative;
+      z-index:2;
+    }
+    .hero-card p{
+      text-align:center;
+      color:#cbd5e1;
+      font-size:14px;
+      margin-top:8px;
+      position:relative;
+      z-index:2;
+    }
+
+    /* GENERAL */
+    section{scroll-margin-top:82px}
+    .section{
+      padding:90px 22px;
+    }
+    .section.alt{background:#fff8f5}
+    .container{
+      max-width:1180px;
+      margin:auto;
+    }
+    .section-heading{
+      max-width:730px;
+      margin-bottom:45px;
+    }
+    .section-heading.center{
+      text-align:center;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    .section-label{
+      color:var(--red);
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:1.5px;
+      font-weight:800;
+      margin-bottom:8px;
+    }
+    .section-heading h2{
+      font-size:clamp(30px,4vw,45px);
+      line-height:1.15;
+      letter-spacing:-1px;
+      margin-bottom:13px;
+    }
+    .section-heading p{color:var(--muted)}
+
+    /* OVERVIEW */
+    .overview-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+    .overview-card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:17px;
+      padding:26px;
+      transition:.25s;
+    }
+    .overview-card:hover{
+      transform:translateY(-5px);
+      box-shadow:var(--shadow);
+      border-color:#f0b8b8;
+    }
+    .icon{
+      width:48px;height:48px;
+      border-radius:13px;
+      background:var(--red-soft);
+      display:grid;place-items:center;
+      font-size:23px;
+      margin-bottom:17px;
+    }
+    .overview-card h3{margin-bottom:8px;font-size:19px}
+    .overview-card p{color:var(--muted);font-size:14px}
+
+    /* CONTENT */
+    .topic-intro{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:25px;
+      margin-bottom:30px;
+    }
+    .info-box{
+      padding:25px;
+      border-radius:16px;
+      background:#fff;
+      border:1px solid var(--border);
+    }
+    .info-box h3{margin-bottom:9px}
+    .info-box p{color:var(--muted);font-size:14px}
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+    }
+    .card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:25px;
+      transition:.2s;
+    }
+    .card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+    .card-number{
+      color:var(--red);
+      font-size:12px;
+      font-weight:800;
+      margin-bottom:5px;
+    }
+    .card h3{font-size:19px;margin-bottom:9px}
+    .card p,.card li{font-size:14px;color:var(--muted)}
+    .card ul{padding-left:20px}
+    .card li{margin:5px 0}
+
+    /* HIGHLIGHT */
+    .highlight{
+      margin-top:28px;
+      background:var(--dark);
+      color:#fff;
+      padding:28px;
+      border-radius:17px;
+      display:flex;
+      align-items:center;
+      gap:20px;
+    }
+    .highlight-icon{
+      width:52px;height:52px;
+      border-radius:13px;
+      background:var(--red);
+      display:grid;place-items:center;
+      flex:0 0 auto;
+      font-size:24px;
+    }
+    .highlight p{color:#cbd5e1;font-size:14px}
+
+    /* TIMELINE */
+    .timeline{
+      position:relative;
+      max-width:900px;
+      margin:0 auto;
+      padding:15px 0;
+    }
+    .timeline::before{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:0;
+      bottom:0;
+      width:2px;
+      background:#e6b5b5;
+      transform:translateX(-50%);
+    }
+    .timeline-item{
+      width:50%;
+      padding:15px 40px;
+      position:relative;
+    }
+    .timeline-item:nth-child(odd){left:0;text-align:right}
+    .timeline-item:nth-child(even){left:50%}
+    .timeline-dot{
+      position:absolute;
+      top:27px;
+      width:15px;height:15px;
+      border-radius:50%;
+      background:var(--red);
+      border:4px solid #fff;
+      box-shadow:0 0 0 2px #e4b4b4;
+    }
+    .timeline-item:nth-child(odd) .timeline-dot{right:-8px}
+    .timeline-item:nth-child(even) .timeline-dot{left:-8px}
+    .timeline-content{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:18px;
+    }
+    .timeline-date{
+      color:var(--red);
+      font-weight:800;
+      font-size:13px;
+      margin-bottom:5px;
+    }
+    .timeline-content h3{font-size:17px;margin-bottom:5px}
+    .timeline-content p{font-size:13px;color:var(--muted)}
+
+    /* CONCLUSION */
+    .conclusion{
+      background:linear-gradient(135deg,#8e1d1d,#c62828);
+      color:#fff;
+      border-radius:22px;
+      padding:45px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .conclusion::before{
+      content:"";
+      position:absolute;
+      width:260px;height:260px;
+      border:50px solid rgba(255,255,255,.07);
+      border-radius:50%;
+      left:-100px;top:-130px;
+    }
+    .conclusion h2{font-size:34px;margin-bottom:12px;position:relative}
+    .conclusion p{
+      max-width:750px;
+      margin:auto;
+      color:#ffe5e5;
+      position:relative;
+    }
+
+    /* FOOTER */
+    footer{
+      background:#111827;
+      color:#fff;
+      padding:35px 22px;
+    }
+    .footer-inner{
+      max-width:1180px;
+      margin:auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+    footer p{font-size:13px;color:#94a3b8}
+
+    /* BACK TO TOP */
+    .top{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      width:44px;height:44px;
+      border:0;
+      border-radius:12px;
+      background:var(--red);
+      color:#fff;
+      cursor:pointer;
+      font-size:18px;
+      opacity:0;
+      visibility:hidden;
+      transform:translateY(10px);
+      transition:.2s;
+      z-index:900;
+    }
+    .top.show{
+      opacity:1;
+      visibility:visible;
+      transform:translateY(0);
+    }
+
+    /* REVEAL */
+    .reveal{
+      opacity:0;
+      transform:translateY(20px);
+      transition:.6s ease;
+    }
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media(max-width:850px){
+      .nav-links{
+        display:none;
+        position:absolute;
+        top:70px;
+        left:15px;right:15px;
+        background:#fff;
+        border:1px solid var(--border);
+        border-radius:14px;
+        padding:10px;
+        box-shadow:var(--shadow);
+        flex-direction:column;
+        align-items:stretch;
+      }
+      .nav-links.open{display:flex}
+      .menu-btn{display:block}
+      .hero-container{grid-template-columns:1fr}
+      .hero{min-height:auto}
+      .hero-card{min-height:350px}
+      .overview-grid{grid-template-columns:1fr}
+      .topic-intro{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr}
+    }
+
+    @media(max-width:650px){
+      .hero{padding-top:120px;padding-bottom:65px}
+      .hero h1{font-size:42px;letter-spacing:-1.5px}
+      .hero p{font-size:15px}
+      .section{padding:65px 18px}
+      .section-heading{margin-bottom:30px}
+      .timeline::before{left:8px}
+      .timeline-item,
+      .timeline-item:nth-child(even),
+      .timeline-item:nth-child(odd){
+        width:100%;
+        left:0;
+        text-align:left;
+        padding:10px 0 10px 35px;
+      }
+      .timeline-item:nth-child(odd) .timeline-dot,
+      .timeline-item:nth-child(even) .timeline-dot{
+        left:1px;
+        right:auto;
+      }
+      .highlight{align-items:flex-start}
+      .conclusion{padding:32px 22px}
+      .conclusion h2{font-size:28px}
+      .footer-inner{flex-direction:column;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#beranda" class="logo">
+        <span class="logo-mark">🇮🇩</span>
+        <span>Jejak Kemerdekaan</span>
+      </a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Buka menu">☰</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#beranda">Beranda</a></li>
+        <li><a href="#jepang">Pendudukan Jepang</a></li>
+        <li><a href="#proklamasi">Proklamasi</a></li>
+        <li><a href="#pemerintahan">Pemerintahan</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero" id="beranda">
+      <div class="hero-container">
+        <div class="reveal">
+          <div class="eyebrow"><span></span> Sejarah Indonesia 1942–1945</div>
+          <h1>Perjalanan Indonesia <strong>Menuju Kemerdekaan</strong></h1>
+          <p>
+            Menelusuri perjalanan bangsa Indonesia dari masa pendudukan Jepang,
+            perjuangan menuju Proklamasi Kemerdekaan, hingga terbentuknya
+            pemerintahan Indonesia.
+          </p>
+          <div class="hero-buttons">
+            <a class="btn btn-primary" href="#jepang">Mulai Perjalanan →</a>
+            <a class="btn btn-outline" href="#timeline">Lihat Timeline</a>
+          </div>
+        </div>
+
+        <div class="hero-card reveal">
+          <div class="flag">
+            <div class="red"></div>
+            <div class="white"></div>
+          </div>
+          <h3>17 Agustus 1945</h3>
+          <p>Proklamasi Kemerdekaan Republik Indonesia</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="section">
+      <div class="container">
+        <div class="section-heading center reveal">
+          <div class="section-label">Perjalanan Sejarah</div>
+          <h2>Tiga Tahap Menuju Indonesia Merdeka</h2>
+          <p>
+            Setiap peristiwa saling berkaitan dan menjadi bagian penting dalam
+            perjalanan bangsa Indonesia menuju negara yang merdeka.
+          </p>
+        </div>
+
+        <div class="overview-grid">
+          <a href="#jepang" class="overview-card reveal">
+            <div class="icon">🇯🇵</div>
+            <h3>01. Pendudukan Jepang</h3>
+            <p>
+              Kedatangan Jepang, kebijakan pendudukan, dampaknya bagi rakyat,
+              serta organisasi yang dibentuk Jepang.
+            </p>
+          </a>
+
+          <a href="#proklamasi" class="overview-card reveal">
+            <div class="icon">📜</div>
+            <h3>02. Proklamasi Kemerdekaan</h3>
+            <p>
+              Kekalahan Jepang, Rengasdengklok, penyusunan teks Proklamasi,
+              hingga pembacaan Proklamasi.
+            </p>
+          </a>
+
+          <a href="#pemerintahan" class="overview-card reveal">
+            <div class="icon">🏛️</div>
+            <h3>03. Pembentukan Pemerintahan</h3>
+            <p>
+              Pengesahan UUD 1945, Presiden dan Wakil Presiden, kementerian,
+              KNIP, serta pemerintahan daerah.
+            </p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- JEPANG -->
+    <section class="section alt" id="jepang">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-label">Bagian A</div>
+          <h2>Pendudukan Jepang</h2>
+          <p>
+            Jepang menduduki Indonesia pada 1942 setelah mengalahkan Belanda.
+            Masa pendudukan membawa berbagai kebijakan yang memengaruhi
+            kehidupan masyarakat Indonesia.
+          </p>
+        </div>
+
+        <div class="topic-intro">
+          <div class="info-box reveal">
+            <h3>🇯🇵 Kedatangan Jepang</h3>
+            <p>
+              Jepang memasuki wilayah Indonesia pada awal 1942. Belanda
+              kemudian menyerah kepada Jepang melalui Perjanjian Kalijati pada
+              8 Maret 1942. Sejak saat itu, kekuasaan kolonial Belanda
+              digantikan oleh pemerintahan militer Jepang.
+            </p>
+          </div>
+
+          <div class="info-box reveal">
+            <h3>📢 Tujuan Pendudukan</h3>
+            <p>
+              Jepang menggunakan propaganda untuk mendapatkan dukungan
+              masyarakat, termasuk gagasan sebagai pemimpin Asia. Dalam
+              praktiknya, Indonesia juga dimanfaatkan untuk kepentingan
+              perang Jepang.
+            </p>
+          </div>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <div class="card-number">A.01</div>
+            <h3>Kebijakan Jepang</h3>
+            <ul>
+              <li>Pelaksanaan kerja paksa atau romusha.</li>
+              <li>Pengumpulan hasil pertanian untuk kebutuhan perang.</li>
+              <li>Pembatasan berbagai bentuk kebebasan masyarakat.</li>
+              <li>Penggunaan propaganda untuk memperoleh dukungan.</li>
+              <li>Pengerahan pemuda melalui berbagai organisasi.</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-number">A.02</div>
+            <h3>Dampak bagi Rakyat Indonesia</h3>
+            <ul>
+              <li>Kekurangan pangan dan kesulitan ekonomi.</li>
+              <li>Rakyat mengalami kerja paksa dan penderitaan.</li>
+              <li>Terjadi perubahan dalam kehidupan sosial masyarakat.</li>
+              <li>Pendidikan mengalami pembatasan dan perubahan.</li>
+              <li>Semangat nasionalisme dan perjuangan terus berkembang.</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-number">A.03</div>
+            <h3>Organisasi Bentukan Jepang</h3>
+            <ul>
+              <li><strong>Putera</strong> — Pusat Tenaga Rakyat.</li>
+              <li><strong>Jawa Hokokai</strong> — organisasi kebaktian rakyat.</li>
+              <li><strong>Seinendan</strong> — organisasi pemuda.</li>
+              <li><strong>Keibodan</strong> — organisasi pembantu keamanan.</li>
+              <li><strong>PETA</strong> — Pembela Tanah Air.</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-number">A.04</div>
+            <h3>Munculnya Persiapan Kemerdekaan</h3>
+            <p>
+              Menjelang akhir pendudukan, Jepang membentuk badan-badan yang
+              berkaitan dengan persiapan kemerdekaan. Perkembangan ini kemudian
+              menjadi salah satu rangkaian menuju BPUPKI, PPKI, dan Proklamasi.
+            </p>
+          </article>
+        </div>
+
+        <div class="highlight reveal">
+          <div class="highlight-icon">💡</div>
+          <div>
+            <h3>Catatan Penting</h3>
+            <p>
+              Masa pendudukan Jepang berlangsung singkat dibandingkan masa
+              kolonial Belanda, tetapi memberikan perubahan besar dalam bidang
+              politik, sosial, ekonomi, dan organisasi pergerakan.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROKLAMASI -->
+    <section class="section" id="proklamasi">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-label">Bagian B</div>
+          <h2>Proklamasi Kemerdekaan</h2>
+          <p>
+            Kekalahan Jepang membuka kesempatan bagi bangsa Indonesia untuk
+            memproklamasikan kemerdekaannya. Beberapa peristiwa penting terjadi
+            dalam waktu yang sangat singkat pada Agustus 1945.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <div class="card-number">B.01</div>
+            <h3>🇯🇵 Kekalahan Jepang</h3>
+            <p>
+              Pada Agustus 1945, Jepang mengalami kekalahan dalam Perang Dunia
+              II. Bom atom dijatuhkan di Hiroshima pada 6 Agustus dan Nagasaki
+              pada 9 Agustus. Jepang kemudian menyatakan menyerah kepada
+              Sekutu pada 15 Agustus 1945.
+            </p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-number">B.02</div>
+            <h3>📍 Rengasdengklok</h3>
+            <p>
+              Pada 16 Agustus 1945, Soekarno dan Mohammad Hatta dibawa oleh
+              golongan pemuda ke Rengasdengklok. Peristiwa ini berkaitan dengan
+              desakan agar Proklamasi segera dilaksanakan tanpa menunggu
+              keputusan Jepang.
+            </p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-number">B.03</div>
+            <h3>✍️ Penyusunan Teks Proklamasi</h3>
+            <p>
+              Setelah kembali dari Rengasdengklok, perumusan teks Proklamasi
+              dilakukan di rumah Laksamana Tadashi Maeda di Jakarta.
+              Soekarno, Mohammad Hatta, dan Ahmad Soebardjo terlibat dalam
+              perumusan. Sayuti Melik kemudian mengetik naskah tersebut.
+            </p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-number">B.04</div>
+            <h3>🇮🇩 Pembacaan Proklamasi</h3>
+            <p>
+              Pada 17 Agustus 1945, Proklamasi Kemerdekaan dibacakan oleh
+              Soekarno didampingi Mohammad Hatta di Jalan Pegangsaan Timur
+              No. 56, Jakarta. Setelah itu dilakukan pengibaran bendera
+              Merah Putih.
+            </p>
+          </article>
+        </div>
+
+        <div class="highlight reveal">
+          <div class="highlight-icon">🇮🇩</div>
+          <div>
+            <h3>17 Agustus 1945</h3>
+            <p>
+              Proklamasi menjadi pernyataan kemerdekaan bangsa Indonesia dan
+              menjadi titik penting dalam pembentukan negara Indonesia.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PEMERINTAHAN -->
+    <section class="section alt" id="pemerintahan">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-label">Bagian C</div>
+          <h2>Pembentukan Pemerintahan Indonesia</h2>
+          <p>
+            Setelah Proklamasi, Indonesia perlu membangun perangkat pemerintahan
+            agar negara yang baru berdiri dapat menjalankan kehidupan
+            kenegaraan.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <div class="card-number">C.01</div>
+            <h3>📖 Pengesahan UUD 1945</h3>
+            <p>
+              Pada 18 Agustus 1945, PPKI mengesahkan Undang-Undang Dasar 1945
+              sebagai konstitusi negara. PPKI juga melakukan perubahan pada
+              rumusan Pembukaan UUD sebelum pengesahan.
+            </p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-number">C.02</div>
+            <h3>👤 Presiden dan Wakil Presiden</h3>
+            <p>
+              Dalam sidang PPKI pada 18 Agustus 1945, Soekarno ditetapkan
+              sebagai Presiden dan Mohammad Hatta sebagai Wakil Presiden
+              Republik Indonesia.
+            </p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-number">C.03</div>
+            <h3>🏛️ Pembentukan Kementerian</h3>
+            <p>
+              Pemerintah membentuk kementerian dan departemen untuk menjalankan
+              berbagai urusan negara. Pembentukan perangkat pemerintahan
+              dilakukan agar administrasi negara dapat berjalan.
+            </p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-number">C.04</div>
+            <h3>📋 Pembentukan KNIP</h3>
+            <p>
+              Komite Nasional Indonesia Pusat atau KNIP dibentuk untuk membantu
+              Presiden. KNIP menjadi salah satu lembaga penting pada masa awal
+              berdirinya Republik Indonesia.
+            </p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-number">C.05</div>
+            <h3>🗺️ Pemerintahan Daerah</h3>
+            <p>
+              Indonesia kemudian membentuk pembagian wilayah dan pemerintahan
+              daerah. Langkah ini diperlukan untuk menyelenggarakan
+              pemerintahan Republik Indonesia di berbagai wilayah.
+            </p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-number">C.06</div>
+            <h3>🎯 Tujuan Pembentukan Pemerintahan</h3>
+            <p>
+              Pembentukan lembaga negara dan pemerintahan bertujuan agar
+              kemerdekaan tidak hanya menjadi pernyataan, tetapi juga diikuti
+              dengan sistem pemerintahan yang dapat menjalankan negara.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="section" id="timeline">
+      <div class="container">
+        <div class="section-heading center reveal">
+          <div class="section-label">Timeline</div>
+          <h2>Garis Waktu Perjalanan Kemerdekaan</h2>
+          <p>
+            Beberapa peristiwa penting dari pendudukan Jepang hingga
+            terbentuknya pemerintahan Indonesia.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">8 Maret 1942</div>
+              <h3>Jepang Menguasai Indonesia</h3>
+              <p>Belanda menyerah kepada Jepang di Kalijati.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">1942–1945</div>
+              <h3>Masa Pendudukan Jepang</h3>
+              <p>
+                Jepang menerapkan berbagai kebijakan dan membentuk sejumlah
+                organisasi di Indonesia.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">6 & 9 Agustus 1945</div>
+              <h3>Bom Atom di Hiroshima dan Nagasaki</h3>
+              <p>Jepang semakin terdesak dalam Perang Dunia II.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">15 Agustus 1945</div>
+              <h3>Jepang Menyerah</h3>
+              <p>
+                Jepang menyatakan menyerah kepada Sekutu setelah kekalahan
+                dalam Perang Dunia II.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">16 Agustus 1945</div>
+              <h3>Peristiwa Rengasdengklok</h3>
+              <p>
+                Soekarno dan Mohammad Hatta dibawa ke Rengasdengklok oleh
+                golongan pemuda.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">16–17 Agustus 1945</div>
+              <h3>Penyusunan Teks Proklamasi</h3>
+              <p>
+                Teks Proklamasi dirumuskan di rumah Laksamana Tadashi Maeda.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">17 Agustus 1945</div>
+              <h3>Proklamasi Kemerdekaan</h3>
+              <p>
+                Soekarno membacakan Proklamasi Kemerdekaan di Pegangsaan Timur
+                No. 56, Jakarta.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">18 Agustus 1945</div>
+              <h3>Awal Pembentukan Negara</h3>
+              <p>
+                UUD 1945 disahkan dan Soekarno-Hatta ditetapkan sebagai
+                Presiden dan Wakil Presiden.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">19–22 Agustus 1945</div>
+              <h3>Pemerintahan Mulai Dibentuk</h3>
+              <p>
+                Kementerian, pembagian wilayah, dan KNIP menjadi bagian dari
+                pembentukan perangkat pemerintahan Indonesia.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONCLUSION -->
+    <section class="section alt">
+      <div class="container">
+        <div class="conclusion reveal">
+          <h2>Perjalanan Menuju Kemerdekaan</h2>
+          <p>
+            Kemerdekaan Indonesia merupakan hasil dari rangkaian peristiwa
+            yang saling berkaitan. Dari masa pendudukan Jepang, perjuangan
+            menuju Proklamasi, hingga pembentukan pemerintahan, bangsa
+            Indonesia mulai membangun negara yang merdeka dan berdaulat.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <strong>Perjalanan Indonesia Menuju Kemerdekaan</strong>
+        <p>Proyek pembelajaran sejarah Indonesia</p>
+      </div>
+      <p>© 2026 — Indonesia Merdeka 🇮🇩</p>
+    </div>
+  </footer>
+
+  <button class="top" id="topBtn" aria-label="Kembali ke atas">↑</button>
+
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+      });
+    });
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Back to top
+    const topBtn = document.getElementById("topBtn");
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 500) {
+        topBtn.classList.add("show");
+      } else {
+        topBtn.classList.remove("show");
+      }
+    });
+
+    topBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+
+</body>
+</html>
